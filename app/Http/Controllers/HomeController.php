@@ -36,6 +36,7 @@ class HomeController extends Controller
         if(Navigation::query()->where('nav_category','Home')->where('nav_name', 'LIKE', "%statistic%")->where('page_type','Group')->latest()->first()!=null){
             $statistics_id = Navigation::query()->where('nav_category','Home')->where('nav_name', 'LIKE', "%statistic%")->where('page_type','Group')->latest()->first()->id;
             $statistics = Navigation::query()->where('parent_page_id',$statistics_id)->latest()->get();
+            // return $statistics;
         }
         else{
             $statistics = null;
@@ -72,10 +73,24 @@ class HomeController extends Controller
         if(Navigation::query()->where('nav_category','Home')->where('nav_name', 'LIKE', "%message%")->where('page_type','Group')->latest()->first()!=null){
             $message_id = Navigation::query()->where('nav_category','Home')->where('nav_name', 'LIKE', "%message%")->where('page_type','Group')->latest()->first()->id;
             $message = Navigation::query()->where('parent_page_id',$message_id)->latest()->first();
+            // return $message;
         }
         else{
             $message = null;
         }
+
+        if (Navigation::query()->where('nav_category', 'Home')->where('nav_name', 'LIKE', "%news&events%")->where('page_type', 'Group')->latest()->first() != null) {
+            $notice_id = Navigation::query()->where('nav_category', 'Home')->where('nav_name', 'LIKE', "%news&events%")->where('page_type', 'Group')->latest()->first()->id;
+            
+            $notice_data = Navigation::find($notice_id)->childs->take(3);
+            // return $notice_data;
+        } else {
+            $message = null;
+        }
+
+
+
+
         if(Navigation::query()->where('nav_category','Home')->where('nav_name', 'LIKE', "%process%")->where('page_type','Group')->latest()->first()!=null){
             $process_id = Navigation::query()->where('nav_category','Home')->where('nav_name', 'LIKE', "%process%")->where('page_type','Group')->latest()->first()->id;
             $process = Navigation::query()->where('parent_page_id',$process_id)->latest()->get();
@@ -85,10 +100,10 @@ class HomeController extends Controller
         }
         //return $misson;
         $job_categories = Navigation::all()->where('nav_category','Main')->where('page_type','Group')->where('banner_image','!=',null);
-        //sreturn $job_categories;
+        // return $job_categories;
         $global_setting = GlobalSetting::all()->first(); 
         //return $missons;       
-        return view("website.index")->with(['testimonial'=>$testimonial,'statistics'=>$statistics,'partners'=>$partners,'jobs'=>$jobs,'banners'=>$banners,'about'=>$About,'menus'=>$menus,'global_setting'=>$global_setting,'sliders'=>$sliders,'missons'=>$missons,'job_categories'=>$job_categories,'message'=>$message,'process'=>$process]);
+        return view("website.index")->with(['testimonial'=>$testimonial,'statistics'=>$statistics,'partners'=>$partners,'jobs'=>$jobs,'banners'=>$banners,'about'=>$About,'menus'=>$menus,'global_setting'=>$global_setting,'sliders'=>$sliders,'missons'=>$missons,'job_categories'=>$job_categories,'message'=>$message,'process'=>$process, "notice_data"=> $notice_data]);
     }
 
 
@@ -123,6 +138,7 @@ class HomeController extends Controller
         if(Navigation::query()->where('nav_category','Home')->where('nav_name', 'LIKE', "%message%")->where('page_type','Group')->latest()->first()!=null){
             $message_id = Navigation::query()->where('nav_category','Home')->where('nav_name', 'LIKE', "%message%")->where('page_type','Group')->latest()->first()->id;
             $message = Navigation::query()->where('parent_page_id',$message_id)->latest()->first();
+            // return $message;
         }
         else{
             $message = null;

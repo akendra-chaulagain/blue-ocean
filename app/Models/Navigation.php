@@ -45,7 +45,7 @@ class Navigation extends Model
 
     public function childs()
     {
-        return $this->hasMany('App\Models\Navigation','parent_page_id','id')->where('page_type','!=','Job')->where('page_type','!=','Notice')->where('page_status','1')->orderBy('position','ASC');
+        return $this->hasMany('App\Models\Navigation','parent_page_id','id')->where('page_type','!=','Job')->where('page_status','1')->orderBy('position','ASC');
     }
 
     public function parents()

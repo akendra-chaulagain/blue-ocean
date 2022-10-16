@@ -1,26 +1,45 @@
-            <div class="service-style-one section-spacing bg-gray">
-				<div class="container">
-					<div class="theme-title-one">
-						<h2>Job Category</h2>
-					</div> <!-- /.theme-title-one -->
-					<div class="wrapper">
-						<div class="row">
-                          @foreach($job_categories as $cat)
-							<div class="col-xl-4 col-lg-6 col-12">
-								<div class="single-service">
-									<div class="img-box"> <img src="{{$cat->banner_image}}" alt=""/></div>
-									<div class="text">
-										<h5><a href="/{{$cat->nav_name}}">{{$cat->caption}}</a></h5>
-										<!-- <p>If the job requirement</p> -->
-										<a href="/{{$cat->nav_name}}" class="read-more">View Job<i class="fa fa-angle-right" aria-hidden="true"></i></a>
-									</div> <!-- /.text -->
-								</div> <!-- /.single-service -->
-							</div> <!-- /.col- -->
-						  @endforeach
-						</div> <!-- /.row -->
-						<div class="view-all-btn">
-						<a href="/job-category" class="theme-button-one">View All</a>
-						</div>
-					</div> <!-- /.wrapper -->
-				</div> <!-- /.container -->
-			</div> <!-- /.Job Category -->
+@php
+$products_data = App\Models\Navigation::find(2471);
+@endphp
+
+
+
+
+
+<section id="projectsRow" class="row fullWidth">
+    <div class="row sectionTitles m0">
+        <h2 class="sectionTitle">Job Category</h2>
+        <div class="sectionSubTitle">latest job</div>
+    </div>
+    <div class="row filtersRow m0">
+        <button type="button" class="collapsed project_filderButton visible-xs" data-toggle="collapse"
+            data-target="#filters">
+            <span class="btn-text"><i class="fa fa-filter"></i> Project Filter</span>
+        </button>
+        <ul class="list-inline text-center collapse navbar-collapse filters" id="filters">
+
+            @foreach ($products_data->childs as $project_headingitem)
+                <li data-filter=".{{ $project_headingitem->nav_name }}">{{ $project_headingitem->caption }}</li>
+            @endforeach
+
+        </ul>
+    </div>
+    <div class="row projects m0" id="container">
+
+        @foreach ($products_data->childs as $project_headingitem)
+            <div class="project {{ $project_headingitem->nav_name }}">
+                <img src="{{ $project_headingitem->banner_image }}" alt="Project 1" class="projectImg">
+                <div class="projectDetails row m0">
+                    <div class="fleft nameType">
+                        <div class="row m0 projectName">{{ $project_headingitem->caption }}</div>
+                        <div class="row m0 projectType">{!! $project_headingitem->short_content !!}
+                        </div>
+                    </div>
+                    <div class="fright projectIcons btn-group" role="group">
+                        <a href="job-detail.html" class="btn btn-default"><i class="fa fa-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+</section>

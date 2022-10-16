@@ -245,7 +245,7 @@
             @if(($navigation->parent_page_id) == 26 || ($navigation->id) == 7))
             @else           
             <div class="form-group col-md-12">
-                <label for="icon_image_caption">Extra Caption</label>
+                <label for="icon_image_caption">Icon Text</label>
                     <input class="form-control" type="text" id="icon_image_caption" name="icon_image_caption" placeholder="Extra Caption" value="{{$navigation->icon_image_caption}}">
             </div>
             @endif
@@ -257,6 +257,11 @@
                     <a href="/admin/navigation-edit/{{$nav_category}}/{{$navigation->id}}/deleteimage3" onclick="return confirm('Are you sure to delete')" style="color: red">Remove Banner Image</a>
                     @endif                
                     <input class="form-control" type="file" id="banner_file" name="banner_image">
+            </div>
+
+             <div class="form-group col-md-12">
+                <label for="page_title">Page Title</label>
+                <input class="form-control" type="date" id="page_title" name="page_title" placeholder="Page Title" value="{{$navigation->page_title}}">
             </div>
 
             @if($navigation->main_attachment)
@@ -277,10 +282,7 @@
                 </div>
             @endif
 
-            <div class="form-group col-md-12">
-                <label for="page_title">Page Title</label>
-                <input class="form-control" type="text" id="page_title" name="page_title" placeholder="Page Title" value="{{$navigation->page_title}}">
-            </div>
+           
             <div class="form-group col-md-12">
                 <label for="page_keyword">Page Keywords</label>
                 <input class="form-control" type="text" id="page_keyword" name="page_keyword" placeholder="Page Keywords" value="{{$navigation->page_keyword}}">

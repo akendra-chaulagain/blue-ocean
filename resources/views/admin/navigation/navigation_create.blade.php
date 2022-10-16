@@ -173,7 +173,7 @@
             </div>
 
             <div class="form-group col-md-12">
-                <label for="icon_image_caption">Extra Caption</label>
+                <label for="icon_image_caption">Icon Text</label>
                     <input class="form-control" type="text" id="icon_image_caption" name="icon_image_caption" placeholder="Extra Caption" value="">
             </div>
 
@@ -182,15 +182,17 @@
                     <input class="form-control" type="file" id="banner_image" name="banner_image">
             </div>
 
+             <div class="form-group col-md-12">
+                <label for="page_title">Date</label>
+                <input class="form-control" type="date" id="page_title" name="page_title" placeholder="Page Title" value="">
+            </div>
+
             <div id="main_attachment" class="form-group col-md-10">
                 <label for="main_attachment">Main Attachment</label>
                 <input type="file" class="form-control" id="main_attachment" name="main_attachment">
             </div>
 
-            <div class="form-group col-md-12">
-                <label for="page_title">Page Title</label>
-                <input class="form-control" type="text" id="page_title" name="page_title" placeholder="Page Title" value="">
-            </div>
+           
 
             <div class="form-group col-md-12">
                 <label for="page_keyword">Page Keywords</label>
