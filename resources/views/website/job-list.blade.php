@@ -6,6 +6,8 @@ $job_breed = App\Models\Navigation::find($job_category->parent_page_id);
 
 @extends('layouts.master')
 @section('content')
+
+
     <section id="pageCover" class="row aboutUs">
         <div class="row pageTitle">{{ $job_category->caption }}</div>
         <div class="row pageBreadcrumbs">

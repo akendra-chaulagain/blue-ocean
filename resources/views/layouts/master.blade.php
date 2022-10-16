@@ -112,15 +112,17 @@ if (isset($normal)) {
 
                         @foreach ($menus as $menu)
                             @php $submenus = $menu->childs; @endphp
-                            <li class="dropdown" @if (isset($slug_detail) && $slug_detail->nav_name == $menu->nav_name)  @endif><a class="dropdown-toggle"
+                            <li class="dropdown" @if (isset($slug_detail) && $slug_detail->nav_name == $menu->nav_name)  @endif>
+                                <a class="dropdown-toggle"
                                     data-toggle="dropdown" role="button" aria-expanded="false"
                                     @if ($submenus->count() > 0) href="#" @else href="{{ route('category', $menu->nav_name) }}" @endif>{{ $menu->caption }}</a>
+                                    
+                            
 
                                 @if ($submenus->count() > 0)
                                     <ul class="dropdown-menu" role="menu">
                                         @foreach ($submenus as $sub)
                                             <li>
-
                                                 <a
                                                     href="{{ route('subcategory', [$menu->nav_name, $sub->nav_name]) }}">{{ $sub->caption }}</a>
                                             </li>
@@ -132,13 +134,6 @@ if (isset($normal)) {
 
 
 
-                        {{-- <li class=" dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">about</a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="inner.html">About us</a></li>
-                                <li><a href="#">Message From MD</a></li>
-                            </ul>
-                        </li> --}}
 
                         <li><a href="/contact">Contact</a></li>
                     </ul>
