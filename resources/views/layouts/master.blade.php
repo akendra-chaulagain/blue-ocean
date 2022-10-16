@@ -138,7 +138,7 @@ if (isset($normal)) {
                         <li><a href="/contact">Contact</a></li>
                     </ul>
                     <div class="apply-button">
-                        <a href="apply-form.html" class="btn btn-default">Apply Now</a>
+                        <a href="/jobapply" class="btn btn-default">Apply Now</a>
                     </div>
                 </div>
             </div>
@@ -212,6 +212,20 @@ if (isset($normal)) {
     <!--Construction JS-->
     <script src="/website/js/custom.js"></script>
     <script type="text/javascript"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    @if (Session::has('contact'))
+        <script>
+            Swal.fire(
+                'Thanks!',
+                "Form submitted sucessfully!!!",
+                'success'
+            )
+        </script>
+    @endif
 </body>
 
 </html>

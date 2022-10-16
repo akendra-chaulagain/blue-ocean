@@ -69,12 +69,17 @@ class ContactController extends Controller
         $menus = Navigation::query()->where('nav_category','Main')->where('page_type','!=','Job')->where('page_type','!=','Photo Gallery')->where('page_type','!=','Notice')->where('parent_page_id',0)->where('page_status','1')->orderBy('position','ASC')->get();
         return view("admin.contact")->with(['contacts'=>$contacts,'slug_detail'=>$slug_detail,'menus'=>$menus,'global_setting'=>$global_setting]);
     }
+
+
+    
     public function inquiry(){
        //$job =Navigation::all()->where('nav_name',$slug)->first();        
         $global_setting = GlobalSetting::all()->first(); 
         $menus = Navigation::query()->where('nav_category','Main')->where('page_type','!=','Job')->where('page_type','!=','Photo Gallery')->where('page_type','!=','Notice')->where('parent_page_id',0)->where('page_status','1')->orderBy('position','ASC')->get();
-        return view("admin.inquiry")->with(['menus'=>$menus,'global_setting'=>$global_setting]);
+        return view("admin.apply")->with(['menus'=>$menus,'global_setting'=>$global_setting]);
     }
+
+    
     public function jobApply($slug){
         $job_detail = Navigation::where('nav_name',$slug)->first();
         $global_setting = GlobalSetting::all()->first(); 
