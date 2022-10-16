@@ -226,6 +226,7 @@ class HomeController extends Controller
         elseif($category_type == "Normal"){
             //return $category_id;
             $normal = Navigation::find($category_id);
+
             return view("website.normal")->with(['message'=>$message,'normal'=>$normal,'jobs'=>$jobs,'menus'=>$menus,'sliders'=>$sliders,'about'=>$About,'global_setting'=>$global_setting,'slug_detail'=>$slug_detail]);
         }
         else{
@@ -354,8 +355,14 @@ class HomeController extends Controller
             return view("website.video_gallery")->with(["partners"=>$partners,'photos'=>$photos,'jobs'=>$jobs,'menus'=>$menus,'sliders'=>$sliders,'about'=>$About,'global_setting'=>$global_setting,'slug_detail'=>$slug_detail]);
         }
         elseif($subcategory_type == "Job"){
-            //return "return to view job";
-            return view("website.job-list")->with(["partners"=>$partners,'jobs'=>$jobs,'menus'=>$menus,'sliders'=>$sliders,'about'=>$About,'global_setting'=>$global_setting,'slug_detail'=>$slug_detail]);
+            $job_category = Navigation::find($subcategory_id);
+            $jobs = Navigation::find($subcategory_id)->childs;
+            // return $job_category->childs->first()->getJob;
+            // return $job_category;
+
+           
+
+            return view("website.job-list")->with(["partners"=>$partners,'jobs'=>$jobs,'menus'=>$menus,'sliders'=>$sliders,'about'=>$About,'global_setting'=>$global_setting,'slug_detail'=>$slug_detail, "job_category"=> $job_category, "jobs"=> $jobs]);
         }
         elseif($subcategory_type == "Notice"){
             // return "return to view Notice";
@@ -367,13 +374,16 @@ class HomeController extends Controller
         elseif($subcategory_type == "Normal"){
             $normal = Navigation::find($subcategory_id);
             return view("website.normal")->with(["partners"=>$partners,'message'=>$message,'normal'=>$normal,'jobs'=>$jobs,'menus'=>$menus,'sliders'=>$sliders,'about'=>$About,'global_setting'=>$global_setting,'slug_detail'=>$slug_detail]);
+
+
         }
         elseif($subcategory_type == "Group"){
-            //return "return to job else";
+        
             return view("website.job-list")->with(["partners"=>$partners,'jobs'=>$jobs,'menus'=>$menus,'sliders'=>$sliders,'about'=>$About,'global_setting'=>$global_setting,'slug_detail'=>$slug_detail]);
+
         }
         else{
-            return redirect("/");
+            // return redirect("/");
         }
     }
     public function singlePage($slug){
@@ -402,6 +412,7 @@ class HomeController extends Controller
         //return $normal;
         $global_setting = GlobalSetting::all()->first(); 
         $menus = Navigation::query()->where('nav_category','Main')->where('page_type','!=','Job')->where('page_type','!=','Photo Gallery')->where('page_type','!=','Notice')->where('parent_page_id',0)->where('page_status','1')->orderBy('position','ASC')->get();
+        // return $menus;
         return view("website.normal")->with(['message'=>$message,'slug_detail'=>$normal,'normal'=>$normal,'menus'=>$menus,'global_setting'=>$global_setting,'job_slug'=>$slug]);
     }
     public function allCategory(){

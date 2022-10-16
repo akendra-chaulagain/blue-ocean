@@ -260,7 +260,7 @@
             </div>
 
              <div class="form-group col-md-12">
-                <label for="page_title">Page Title</label>
+                <label for="page_title">Date</label>
                 <input class="form-control" type="date" id="page_title" name="page_title" placeholder="Page Title" value="{{$navigation->page_title}}">
             </div>
 

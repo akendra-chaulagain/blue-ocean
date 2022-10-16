@@ -9,6 +9,7 @@
 	@include("website.home_job_category")
 	@include("website.home_message")
 	@include("website.home_notice")
+	@include("website.company_partner")
 
 	
 

@@ -28,7 +28,13 @@ $products_data = App\Models\Navigation::find(2471);
 
         @foreach ($products_data->childs as $project_headingitem)
             <div class="project {{ $project_headingitem->nav_name }}">
-                <img src="{{ $project_headingitem->banner_image }}" alt="Project 1" class="projectImg">
+
+                @if ($project_headingitem->banner_image)
+                    <img src="{{ $project_headingitem->banner_image }}" alt="Project 1" class="projectImg">
+                @else
+                    <img src="/website/images/project1.jpg" alt="Project 1" class="projectImg">
+                @endif
+
                 <div class="projectDetails row m0">
                     <div class="fleft nameType">
                         <div class="row m0 projectName">{{ $project_headingitem->caption }}</div>

@@ -82,6 +82,14 @@
                     <input class="form-control {{ $errors->has('caption') ? 'has-error' : '' }}" type="number" id="caption" name="contract_time" placeholder="2 years" value="{{$job->contract_time}}" required="required">
                 </div>   
 
+                   <div class="form-group col-md-6">
+                    <label for="caption">No Of Recruits <i class="reqr">*</i> </label>
+                    <input class="form-control {{ $errors->has('caption') ? 'has-error' : '' }}" type="number" id="caption" name="no_of_recruits" placeholder="2 years" value="{{$job->no_of_recruits}}" >
+                </div>   
+                {{-- no_of_recruits --}}
+                
+
+
                 <div id="url_link_div" class="form-group col-md-10" style="display: none;">
                     <label for="link_url">URL Link <i class="reqr">*</i></label>
                     <input class="form-control {{ $errors->has('link') ? 'has-error' : '' }}" type="text" id="link_url" name="link" placeholder="URL Link" value="{{$job->navigation->link}}">

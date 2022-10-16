@@ -1,58 +1,83 @@
+@php
+    $breed = App\Models\Navigation::find($job->parent_page_id);
+    $parent_breed = App\Models\Navigation::find($breed->parent_page_id);
+@endphp
+
+
 @extends('layouts.master')
-    @section("content")
-	@include("website.navbar")
-			<div class="theme-inner-banner">
-				<div class="overlay">
-					<div class="container">
-						<h2>{{$job->caption ?? 'Job Detail'}}</h2>
-					</div> <!-- /.container -->
-				</div> <!-- /.overlay -->
-			</div> <!-- /.theme-inner-banner -->
+@section('content')
+    <section id="pageCover" class="row aboutUs">
+        <div class="row pageTitle">{{ $job->caption }}</div>
+        <div class="row pageBreadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li><a href="#">{{ $parent_breed->caption }}</a></li>
+                <li><a href="/{{ $parent_breed->nav_name }}/{{ $breed->nav_name }}">{{ $breed->caption }}</a></li>
+                <li class="active">{{ $job->caption }}</li>
+            </ol>
+        </div>
+    </section>
 
-			<!-- -----common page------>
-							<!-- <div class="callout-banner">
-				<div class="container clearfix">
-					<h3 class="title">ROHAN GURUNG<br> <span>Chairman</span></h3>
-					<p>Our commitment is finding the right person for the right job as per the request of our valued clients around the world. We are focusing, ethical and fair recruitment procedures. We are always happy to provide our Services.</p>
-					<a href="/jobapply/{{$job->nav_name}}" class="theme-button-one" target="_blank">Apply Now</a>
-				</div>
-			</div> -->
-			 <!-- /.callout-banner -->
+    <section class="job-detail">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="job-content">
+                        <h4>Job Title:{{ $job->caption }}</h4>
+                        <table>
+                            <tr>
+                                <td>Company Name:</td>
+                                <td>{{ $job->getJob->company_name }}</td>
+                            </tr>
+                            <tr>
+                                <td>Country:</td>
+                                <td>{{ $job->getJob->country }}</td>
+                            </tr>
+                            <tr>
+                                <td>No. of Recruits:</td>
+                                <td>{{ $job->getJob->no_of_recruits }}</td>
+                            </tr>
+                            <tr>
+                                <td>Salary:</td>
+                                <td>{{ $job->getJob->salary }}</td>
+                            </tr>
+                            <tr>
+                                <td>Normal working hours:</td>
+                                <td>{{ $job->getJob->no_working_hr }}</td>
+                            </tr>
 
-			<!-- 
-				
-			=============================================
-				About Company Stye Two
-			============================================== 
-			-->
-			<div class="about-compnay section-spacing">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-6 col-12 text order-lg-last">
-                            <div class="theme-title-one mb-20">
-								<h4>{{$job->caption}}</h4>
-							</div> <!-- /.theme-title-one -->
-                            <div class="card">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Salary :Rs {{$job->getJob->salary}} per month</li>
-                                    <li class="list-group-item">Country : {{$job->getJob->salary}}n</li>
-                                    <li class="list-group-item">Contract time : {{$job->getJob->salary}} years</li>
-                                </ul>
-                           </div>
-                            
+                            <tr>
+                                <td>Period of Employment</td>
+                                <td>{{ $job->getJob->contract_time }} years</td>
+                            </tr>
 
-							<p class="mb-20">{{$job->short_content}}</p>
-							<p>{{$job->main_content}}</p>
-							<a href="/jobapply/{{$job->nav_name}}" class="theme-button-one" target="_blank">Apply Now</a>
-						</div> <!-- /.col- -->
-						<div class="col-lg-6 col-12 order-lg-first">
-							<img src="{{$job->banner_image}}" alt="" class="left-img">
-						</div>
-					</div> <!-- /.row -->
-				</div> <!-- /.container -->
-			</div> <!-- /.about-compnay-two -->
-			<!------common page end----->
-       
-        @include("website.company_partner")
-    @endsection
-    
+                        </table>
+
+                    </div>
+                </div>
+                <aside class="col-sm-4 sidebar">
+                    <div class="main-content">
+                        <div class="form-wrapper">
+                            <h4>Apply Now</h4>
+                            <form class="theme-form-one form-validation" autocomplete="off">
+                                <div class="col-12"><input type="text" placeholder="Full Name *" name="name"></div>
+                                <div class="col-12"><input type="text" placeholder="Phone Number*" name="phone"></div>
+                                <div class="col-12"><input type="email" placeholder="Email *" name="email"></div>
+                                <div class="col-12"><input type="text" placeholder="Applying For *" name="sub"
+                                        value="{{ $job->caption }}"></div>
+                                <div class="col-12">
+                                    <label>Your CV</label>
+                                    <input type="file" class="form-control file-upload">
+                                </div>
+                                <div class="col-12">
+                                    <textarea placeholder="If any Question..." name="message"></textarea>
+                                </div>
+                                <button class="theme-button-one">Submit</button>
+                            </form>
+                        </div> <!-- /.form-wrapper -->
+                    </div> <!-- /.col- -->
+                </aside>
+            </div>
+        </div>
+    </section>
+@endsection
