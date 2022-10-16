@@ -4,8 +4,6 @@ $products_data = App\Models\Navigation::find(2471);
 
 
 
-
-
 <section id="projectsRow" class="row fullWidth">
     <div class="row sectionTitles m0">
         <h2 class="sectionTitle">Job Category</h2>
@@ -38,11 +36,11 @@ $products_data = App\Models\Navigation::find(2471);
                 <div class="projectDetails row m0">
                     <div class="fleft nameType">
                         <div class="row m0 projectName">{{ $project_headingitem->caption }}</div>
-                        <div class="row m0 projectType">{!! $project_headingitem->short_content !!}
-                        </div>
+                        {{-- <div class="row m0 projectType">{!! $project_headingitem->short_content !!}
+                        </div> --}}
                     </div>
                     <div class="fright projectIcons btn-group" role="group">
-                        <a href="job-detail.html" class="btn btn-default"><i class="fa fa-plus"></i></a>
+                        <a href="{{ $products_data->nav_name }}/{{$project_headingitem->nav_name  }}" class="btn btn-default"><i class="fa fa-plus"></i></a>
                     </div>
                 </div>
             </div>

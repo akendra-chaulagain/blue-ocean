@@ -28,7 +28,7 @@
                          </div>
                          <div class="caption sfl stl" data-x="center" data-y="480" data-speed="500" data-start="1900"
                              data-easing="easeOutBack">
-                             <h4>{{ $sliders_item->short_content }}</h4>
+                             <h4>{!! $sliders_item->short_content !!}</h4>
                          </div>
                      </li>
                  @endforeach

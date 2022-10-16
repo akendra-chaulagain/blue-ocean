@@ -21,20 +21,37 @@ if (isset($normal)) {
 
 <head>
     <meta charset="UTF-8">
-    <!-- For IE -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- For Resposive Device -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- For Window Tab Color -->
-    <!-- Chrome, Firefox OS and Opera -->
-    <meta name="theme-color" content="#061948">
-    <!-- Windows Phone -->
-    <meta name="msapplication-navbutton-color" content="#061948">
-    <!-- iOS Safari -->
-    <meta name="apple-mobile-web-app-status-bar-style" content="#061948">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
     <!-----SEO--------->
 
-    <title>Blue Ocean Overseas Pvt. Ltd.</title>
+    <title> @stack('title') | {{ $seo->page_titile ?? $global_setting->page_title }}</title>
+    <meta name="title" content="{{ $seo->page_titile ?? $global_setting->page_title }}">
+    <meta name="description" content="{{ $seo->page_description ?? $global_setting->page_description }}">
+    <meta name="keywords" content="{{ $seo->page_keyword ?? $global_setting->page_keyword }}">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="1 days">
+    <meta name="author" content="{{ $global_setting->site_name ?? '' }}">
+
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ $global_setting->website_full_address ?? '' }}">
+    <meta property="og:title" content="{{ $seo->page_title ?? $global_setting->page_title }}">
+    <meta property="og:description" content="{{ $seo->page_description ?? $global_setting->page_description }}">
+    <meta property="og:image" content="{{ $seo->banner_image ?? '/uploads/icons/' . $global_setting->site_logo }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ $global_setting->website_full_address ?? '' }}">
+    <meta property="twitter:title" content="{{ $seo->page_title ?? $global_setting->page_title }}">
+    <meta property="twitter:description" content="{{ $seo->page_description ?? $global_setting->page_description }}">
+    <meta property="twitter:image"
+        content="{{ $seo->banner_image ?? '/mtchub/uploads/icons/' . $global_setting->site_logo }}">
 
     <!--Favicons-->
     <link rel="icon" type="image/png" href="/website/images/fav-icon.png" sizes="32x32">
@@ -66,24 +83,31 @@ if (isset($normal)) {
             <div class="row">
                 <div class="logo col-sm-3">
                     <div class="row">
-                        <a href="index.html"><img src="/website/images/blue-ocean-overseas-pvt-ltd.png"
-                                alt="Blue Ocean Overseas"></a>
+                        <a href="index.html"><img src="{{ '/uploads/icons/' . $global_setting->site_logo }}"
+                                    alt="logo"></a>
                     </div>
                 </div>
                 <div class="social_nav col-sm-9">
                     <div class="row">
                         <ul class="list-inline fright">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                            <li><a target="_blank" href="{{ $global_setting->facebook ?? '#' }}"><i
+                                        class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a target="_blank" href="{{ $global_setting->linkedin ?? '#' }}"><i
+                                        class="fa fa-linkedin"></i></a>
+                            </li>
+                            {{-- <li><a href="#"><i class="fa fa-instagram"></i></a></li> --}}
+                            <li><a target="_blank" href="{{ $global_setting->twitter ?? '#' }}"><i
+                                        class="fa fa-twitter"></i></a></li>
+                            {{-- <li><a href="#"><i class="fa fa-youtube"></i></a></li> --}}
                         </ul>
                         <ul class="list-inline c-info fright">
-                            <li><a href="tel: +977014351732"><i class="fa fa-phone"></i> +977 (01) 4351732</a></li>
-                            <li><a href="tel: +977014365826"><i class="fa fa-phone"></i> +977 (01) 4365826</a></li>
-                            <li><a href="mailto:info@domain.com"><i class="fa fa-envelope-o"></i>
-                                    info@blueocean.com.np</a></li>
+                            <li><a href="tel: {{ $global_setting->phone_ne }}"><i class="fa fa-phone"></i>
+                                    {{ $global_setting->phone_ne }}</a></li>
+                            <li><a href="tel: {{ $global_setting->phone }}"><i class="fa fa-phone"></i>
+                                    {{ $global_setting->phone }}</a></li>
+                            <li><a href="{{ $global_setting->site_email }}"><i class="fa fa-envelope-o"></i>
+                                    {{ $global_setting->site_email }}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -113,11 +137,11 @@ if (isset($normal)) {
                         @foreach ($menus as $menu)
                             @php $submenus = $menu->childs; @endphp
                             <li class="dropdown" @if (isset($slug_detail) && $slug_detail->nav_name == $menu->nav_name)  @endif>
-                                <a class="dropdown-toggle"
-                                    data-toggle="dropdown" role="button" aria-expanded="false"
+                                <a class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                    aria-expanded="false"
                                     @if ($submenus->count() > 0) href="#" @else href="{{ route('category', $menu->nav_name) }}" @endif>{{ $menu->caption }}</a>
-                                    
-                            
+
+
 
                                 @if ($submenus->count() > 0)
                                     <ul class="dropdown-menu" role="menu">
@@ -213,7 +237,7 @@ if (isset($normal)) {
     <script src="/website/js/custom.js"></script>
     <script type="text/javascript"></script>
 
-    
+
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 

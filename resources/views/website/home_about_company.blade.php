@@ -1,3 +1,7 @@
+@php
+$normal_gallary_notice = App\Models\Navigation::find(2445);
+@endphp
+
 <section id="about-sec" class="row">
     <div class="container">
         <div class="row">
@@ -5,7 +9,7 @@
                 <div class="about-text">
                     <h3>{{ $about->caption }}</h3>
                     <p>{!! $about->short_content !!}</p>
-                    <a href="inner.html" class="btn btn-default">Read More</a>
+                    <a href="/about/{{ $normal_gallary_notice->nav_name }}" class="btn btn-default">Read More</a>
                 </div>
             </div>
         </div>

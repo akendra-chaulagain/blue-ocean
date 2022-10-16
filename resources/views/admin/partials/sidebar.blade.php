@@ -20,21 +20,22 @@
             <li class="{{Request::is('admin/navigation-list/Home')?'active':''}} treeview"><a
                         href="{{url('/admin/navigation-list/Home')}}"><i class="fa fa-list"></i>
                     <span>Home Navigation</span></a></li>
-                    <li class="{{Request::is('admin/navigation-list/SNS')?'active':''}}  treeview"><a href="{{url('/admin/navigation-list/SNS')}}"><i class="fa fa-list"></i> <span>SNS Navigation</span></a> </li>
-                    <li class="{{Request::is('admin/subscribers-list')?'active':''}} treeview"><a
+                    {{-- <li class="{{Request::is('admin/navigation-list/SNS')?'active':''}}  treeview"><a href="{{url('/admin/navigation-list/SNS')}}"><i class="fa fa-list"></i> <span>SNS Navigation</span></a> </li> --}}
+                    {{-- <li class="{{Request::is('admin/subscribers-list')?'active':''}} treeview"><a
                         href="{{url('/admin/subscribers-list')}}"><i class="fa fa-list"></i>
-                    <span>Subscribers List</span></a></li>
-            <li class="{{Request::is('admin/global-setting')?'active':''}}  treeview"><a
-                        href="{{url('/admin/global-setting')}}"><i class="fa fa-cog"></i> <span>Global Setup</span></a>
-            </li>
+                    <span>Subscribers List</span></a></li> --}}
+          
             <!--------customized by MD------------>
-             <li class="{{Request::is('admin/job-list')?'active':''}}  treeview"><a
+             {{-- <li class="{{Request::is('admin/job-list')?'active':''}}  treeview"><a
                         href="{{url('/admin/job-list')}}"><i class="fa fa-cog"></i> <span>JOBS</span></a>
-            </li>
+            </li> --}}
             <!----------end------------>
                <!--------customized by MD------------>
              <li class="{{Request::is('admin/applied-job-list')?'active':''}}  treeview"><a
                         href="{{url('/admin/applied-job-list')}}"><i class="fa fa-cog"></i> <span>Applied Job</span></a>
+            </li>
+              <li class="{{Request::is('admin/global-setting')?'active':''}}  treeview"><a
+                        href="{{url('/admin/global-setting')}}"><i class="fa fa-cog"></i> <span>Global Setup</span></a>
             </li>
             <!----------end------------>
         </ul>
