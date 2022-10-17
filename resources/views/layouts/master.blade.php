@@ -20,7 +20,7 @@
 <html lang="en">
 
 <head>
-     <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -53,7 +53,7 @@
     <meta property="twitter:image"
         content="{{ $seo->banner_image ?? '/uploads/icons/' . $global_setting->site_logo }}">
 
-    
+
 
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="{{ '/uploads/icons/' . $global_setting->favicon }}" type="image/png">
@@ -68,7 +68,7 @@
     <link rel="stylesheet" type="text/css" href="/website/vendors/js-flickr-gallery/css/js-flickr-gallery.css"
         media="screen" />
     <link rel="stylesheet" type="text/css" href="/website/vendors/lightbox/css/lightbox.css" media="screen" />
-   <link rel="stylesheet" href='https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css'>
+    <link rel="stylesheet" href='https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css'>
 
     <!--Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Raleway:500,600,700,100,800,900,400,200,300' rel='stylesheet'
@@ -136,13 +136,12 @@
                 </div>
                 <div class="collapse navbar-collapse" id="main_nav">
                     <ul class="nav navbar-nav">
-                        <li class="active "><a href="/">Home</a></li>
+                        <li><a href="/">Home</a></li>
 
                         @foreach ($menus as $menu)
                             @php $submenus = $menu->childs; @endphp
                             <li class="dropdown" @if (isset($slug_detail) && $slug_detail->nav_name == $menu->nav_name)  @endif>
-                                <a class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                    aria-expanded="false"
+                                <a class="dropdown-toggle"
                                     @if ($submenus->count() > 0) href="#" @else href="{{ route('category', $menu->nav_name) }}" @endif>{{ $menu->caption }}</a>
 
 
@@ -163,7 +162,7 @@
 
 
 
-                        <li><a href="/contact">Contact</a></li>
+                        <li><a class="active" href="/contact">Contact</a></li>
                     </ul>
                     <div class="apply-button">
                         <a href="/jobapply" class="btn btn-default">Apply Now</a>
@@ -207,7 +206,7 @@
                                     </div>
                                 </li>
                                 <li class="map-box">
-                                  
+
                                     {!! $global_setting->page_keyword !!}
 
                                 </li>
@@ -217,9 +216,10 @@
                 </div>
             </div>
             <div class="row copyrightRow">
-                &copy; <script>
-                            document.write(new Date().getFullYear())
-                        </script> Blue Ocean Overseas Pvt. Ltd., All Rights Reserved. Developed by <a
+                &copy;
+                <script>
+                    document.write(new Date().getFullYear())
+                </script> Blue Ocean Overseas Pvt. Ltd., All Rights Reserved. Developed by <a
                     href="https://radiantnepal.com/" target="_blank">Radiant Infotech</a>
             </div>
         </div>
@@ -229,27 +229,27 @@
 
 
     <!--jQuery, Bootstrap and other vendor JS-->
-    <script src="/website/js/jquery-2.1.3.min.js"></script>
-    <script src="/website/js/bootstrap.min.js"></script>
+    <script src="website/js/jquery-2.1.3.min.js"></script>
+    <script src="website/js/bootstrap.min.js"></script>
 
-    <script src="/website/vendors/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-    <script src="/website/vendors/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-    <script src="/website/vendors/owl.carousel/js/owl.carousel.min.js"></script>
+    <script src="website/vendors/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script src="website/vendors/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="website/vendors/owl.carousel/js/owl.carousel.min.js"></script>
 
-    <script src="/website/vendors/js-flickr-gallery/js/js-flickr-gallery.min.js"></script>
-    <script src="/website/vendors/lightbox/js/lightbox.min.js"></script>
+    <script src="website/vendors/js-flickr-gallery/js/js-flickr-gallery.min.js"></script>
+    <script src="website/vendors/lightbox/js/lightbox.min.js"></script>
     <!--Isotope-->
-    <script src="/website/vendors/isotope/isotope-custom.js"></script>
+    <script src="website/vendors/isotope/isotope-custom.js"></script>
 
     <!--Construction JS-->
-    <script src="/website/js/custom.js"></script>
+    <script src="website/js/custom.js"></script>
     <script type="text/javascript"></script>
 
 
 
 
 
-<!-- gllery js -->
+    <!-- gllery js -->
     <script src="/website/js/gallery/picturefill.min.js"></script>
     <script src="/website/js/gallery/lightgallery.js"></script>
     <script src="/website/js/gallery/lg-pager.js"></script>
@@ -267,16 +267,16 @@
         lightGallery(document.getElementById('lightgallery'));
 
         $(function() {
-        var selectedClass = "";
-        $(".filter").click(function(){
-        selectedClass = $(this).attr("data-rel");
-        $("#lightgallery").fadeTo(100, 0.1);
-        $("#lightgallery div").not("."+selectedClass).fadeOut().removeClass('animation');
-        setTimeout(function() {
-        $("."+selectedClass).fadeIn().addClass('animation');
-        $("#lightgallery").fadeTo(300, 1);
-        }, 300);
-        });
+            var selectedClass = "";
+            $(".filter").click(function() {
+                selectedClass = $(this).attr("data-rel");
+                $("#lightgallery").fadeTo(100, 0.1);
+                $("#lightgallery div").not("." + selectedClass).fadeOut().removeClass('animation');
+                setTimeout(function() {
+                    $("." + selectedClass).fadeIn().addClass('animation');
+                    $("#lightgallery").fadeTo(300, 1);
+                }, 300);
+            });
         });
     </script>
 

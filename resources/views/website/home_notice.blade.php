@@ -35,7 +35,7 @@
                         </div>
                         <div class="row m0 postExcerpts">
                             <div class="row m0 postExcerptInner">
-                                <a href="#" class="postTitle row m0">
+                                <a href="/read-more/{{ $notice_data_item->nav_name }}" class="postTitle row m0">
                                     <h4>{{ $notice_data_item->caption }}</h4>
                                 </a>
                                 <p>{!! $notice_data_item->short_content !!}</p>

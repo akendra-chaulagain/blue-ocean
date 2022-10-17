@@ -2387,6 +2387,7 @@ header .social_nav ul li:last-child {
 
 .folder-text{
   max-width: 75%;
+  display: flex;
 }
 @keyframes open {
   50% {

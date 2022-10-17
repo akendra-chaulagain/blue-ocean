@@ -20,7 +20,7 @@
 
 
                 @foreach ($photos as $photo)
-                    <div class="col-sm-4">
+                    <div class="col-md-4 col-sm-12">
                         <a href="{{ route('galleryview', $photo->nav_name) }}">
                             <div class="folder">
                                 <div class="paper folder-pop"><img src="{{ $photo->banner_image }}" width="100%"></div>
