@@ -32,7 +32,7 @@ $job_breed = App\Models\Navigation::find($job_category->parent_page_id);
                             @if ($job_category_item->banner_image)
                                  <img src="{{ $job_category_item->banner_image }}" alt="Project 1" class="projectImg">
                             @else
-                                 <img src="/website/images/project1.jpg" alt="Project 1" class="projectImg">
+                                 <img src="/website/images/default/project1.jpg" alt="Project 1" class="projectImg">
                             @endif
                            
                             <div class="projectDetails row m0">

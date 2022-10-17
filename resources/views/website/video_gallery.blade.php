@@ -29,10 +29,7 @@
             <div class="row">
                 @foreach ($photos as $photo)
                     <div class="col-md-6 col-sm-6">
-                        <iframe width="100%" height="315" src="{{ $photo->link }}" title="YouTube video player"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
+                       {!! $photo->link !!}
                     </div>
                 @endforeach
             </div> <!-- /.row -->

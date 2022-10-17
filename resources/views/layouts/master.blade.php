@@ -20,7 +20,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+     <meta charset="UTF-8">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -53,8 +53,11 @@
     <meta property="twitter:image"
         content="{{ $seo->banner_image ?? '/uploads/icons/' . $global_setting->site_logo }}">
 
-    <!--Favicons-->
-    {{-- <link rel="icon" type="image/png" href="/website/images/fav-icon.png" sizes="32x32"> --}}
+    
+
+    <!--====== Favicon Icon ======-->
+    <link rel="shortcut icon" href="{{ '/uploads/icons/' . $global_setting->favicon }}" type="image/png">
+
 
     <!--Bootstrap and Other Vendors-->
     <link rel="stylesheet" href="/website/css/bootstrap.min.css">

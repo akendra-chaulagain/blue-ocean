@@ -30,7 +30,7 @@ $products_data = App\Models\Navigation::find(2471);
                 @if ($project_headingitem->banner_image)
                     <img src="{{ $project_headingitem->banner_image }}" alt="Project 1" class="projectImg">
                 @else
-                    <img src="/website/images/project1.jpg" alt="Project 1" class="projectImg">
+                    <img src="/website/images/default/project1.jpg" alt="Project 1" class="projectImg">
                 @endif
 
                 <div class="projectDetails row m0">

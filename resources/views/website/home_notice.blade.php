@@ -16,15 +16,16 @@
 
 
                             @if ($notice_data_item->banner_image)
-                                <a href="#">
+                                <a href="/read-more/{{ $notice_data_item->nav_name }}">
 
                                     <img src="{{ $notice_data_item->banner_image }}" alt="Faceted Search Has Landed"
                                         class="img-responsive">
                                 </a>
                             @else
-                                <a href="#">
+                                <a href="/read-more/{{ $notice_data_item->nav_name }}">
 
-                                    <img src="/website/images/blog1.jpg" alt="Project 1" class="projectImg">
+                                    <img src="/website/images/default/blog1.jpg" alt="Faceted Search Has Landed"
+                                        class="img-responsive">
                                 </a>
                             @endif
 

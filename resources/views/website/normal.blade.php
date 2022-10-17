@@ -1,11 +1,14 @@
 @php
-$breed = App\Models\Navigation::find($normal->parent_page_id);
+    $breed = App\Models\Navigation::find($normal->parent_page_id);
+    $global_setting = app\Models\GlobalSetting::all()->first();
+    $side_bar = App\Models\Navigation::find($normal->parent_page_id)->childs;
+    
 @endphp
 
 
 @extends('layouts.master')
 @push('title')
-   {{ $normal->caption }}
+    {{ $normal->caption }}
 @endpush
 @section('content')
     <section id="pageCover" class="row aboutUs">
@@ -22,7 +25,7 @@ $breed = App\Models\Navigation::find($normal->parent_page_id);
 
 
 
-    
+
 
 
     @if ($breed->nav_name == 'services')
@@ -48,11 +51,6 @@ $breed = App\Models\Navigation::find($normal->parent_page_id);
                 </div>
             </div>
         </section>
-
-
-
-
-        
     @else
         <section id="aboutus" class="row">
             <div class="container">
@@ -76,51 +74,32 @@ $breed = App\Models\Navigation::find($normal->parent_page_id);
                     <aside class="col-sm-3 sidebar">
                         <div class="row m0 recentPostWidget widgetS">
                             <div class="row m0 recentblogs">
-                                <div class="media recentblog">
-                                    <div class="media-body">
-                                        <a href="#">
-                                            <h5 class="media-heading">About Us</h5>
-                                        </a>
+                                @foreach ($side_bar as $side_bar_item)
+                                    <div class="media recentblog">
+                                        <div class="media-body">
+                                            <a href="{{ $side_bar_item->nav_name }}">
+                                                <h5 class="media-heading">{{ $side_bar_item->caption }}</h5>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="media recentblog">
-                                    <div class="media-body">
-                                        <a href="#">
-                                            <h5 class="media-heading">Services</h5>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="media recentblog">
-                                    <div class="media-body">
-                                        <a href="#">
-                                            <h5 class="media-heading">Our Partners</h5>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="media recentblog">
-                                    <div class="media-body">
-                                        <a href="#">
-                                            <h5 class="media-heading">Gallery</h5>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="media recentblog">
-                                    <div class="media-body">
-                                        <a href="#">
-                                            <h5 class="media-heading">Contact Us</h5>
-                                        </a>
-                                    </div>
-                                </div>
+                                @endforeach
+
+
                             </div>
                         </div>
                         <div class="row m0 contactWidget widgetS">
                             <h4>Contact us</h4>
                             <ul class="list-unstyled">
-                                <li><i class="fa fa-phone"></i> <a href="tel:977014351732">+977 (01) 4351732 / <a
-                                            href="tel:977014365826">4365826</a></a></li>
+                                <li><i class="fa fa-phone"></i>
+                                    <a href="tel:{{ $global_setting->phone }}">{{ $global_setting->phone }}
+
+                                    </a>
+                                </li>
                                 <li><i class="fa fa-envelope"></i> <a
-                                        href="mailto:info@blueocean.com.np">info@blueocean.com.np</a></li>
-                                <li><i class="fa fa-home"></i> street address example</li>
+                                        href="mailto:{{ $global_setting->site_email }}">{{ $global_setting->site_email }}</a>
+                                </li>
+                                <li><i class="fa fa-home"></i> {{ $global_setting->website_full_address }}
+                                    {{ $global_setting->address_ne }}</li>
                             </ul>
                         </div>
                     </aside>
