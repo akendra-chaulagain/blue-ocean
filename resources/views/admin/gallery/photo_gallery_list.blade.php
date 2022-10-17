@@ -58,7 +58,7 @@
             <form action="/admin/navigation-list/media/{{$media->id}}/update" method="POST" enctype="multipart/form-data">
                 {{csrf_field()}}
               <td>{{$index+1}}<br>
-                  <img src="{{asset('public/uploads/photo_gallery/'.$media->file)}}" alt="" height="50" width="80">
+                  <img src="/uploads/photo_gallery/{{ $media->file }}" alt="" height="50" width="80">
               </td>
               <td>
                 <input type="text" value="{{$media->name}}" placeholder="Name" name="name" class="form-control">

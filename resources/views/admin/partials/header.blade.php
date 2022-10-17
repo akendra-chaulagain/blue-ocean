@@ -30,7 +30,7 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{asset('assets/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
 
-  <link rel="icon" type="image/png" href="{{asset('assets/img/fav.png')}}" sizes="16x16">
+  <link rel="icon" type="image/png" href="{{asset('assets/img/fav-icon.png')}}" sizes="16x16">
 
 
   @yield('style')
