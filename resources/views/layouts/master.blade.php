@@ -1,19 +1,19 @@
 @php
-$global_setting = app\Models\GlobalSetting::all()->first();
-$normal_gallary_notice = app\Models\Navigation::query()
-    ->where('nav_category', 'Main')
-    ->where('page_type', '!=', 'Job')
-    ->where('page_type', '!=', 'Photo Gallery')
-    ->where('page_type', '!=', 'Notice')
-    ->where('parent_page_id', 0)
-    ->where('page_status', '1')
-    ->orderBy('position', 'ASC')
-    ->get();
-if (isset($normal)) {
-    $seo = $normal;
-} elseif (isset($job)) {
-    $seo = $job;
-}
+    $global_setting = app\Models\GlobalSetting::all()->first();
+    $normal_gallary_notice = app\Models\Navigation::query()
+        ->where('nav_category', 'Main')
+        ->where('page_type', '!=', 'Job')
+        ->where('page_type', '!=', 'Photo Gallery')
+        ->where('page_type', '!=', 'Notice')
+        ->where('parent_page_id', 0)
+        ->where('page_status', '1')
+        ->orderBy('position', 'ASC')
+        ->get();
+    if (isset($normal)) {
+        $seo = $normal;
+    } elseif (isset($job)) {
+        $seo = $job;
+    }
 @endphp
 
 <!DOCTYPE html>
@@ -51,10 +51,10 @@ if (isset($normal)) {
     <meta property="twitter:title" content="{{ $seo->page_title ?? $global_setting->page_title }}">
     <meta property="twitter:description" content="{{ $seo->page_description ?? $global_setting->page_description }}">
     <meta property="twitter:image"
-        content="{{ $seo->banner_image ?? '/mtchub/uploads/icons/' . $global_setting->site_logo }}">
+        content="{{ $seo->banner_image ?? '/uploads/icons/' . $global_setting->site_logo }}">
 
     <!--Favicons-->
-    <link rel="icon" type="image/png" href="/website/images/fav-icon.png" sizes="32x32">
+    {{-- <link rel="icon" type="image/png" href="/website/images/fav-icon.png" sizes="32x32"> --}}
 
     <!--Bootstrap and Other Vendors-->
     <link rel="stylesheet" href="/website/css/bootstrap.min.css">
@@ -83,8 +83,8 @@ if (isset($normal)) {
             <div class="row">
                 <div class="logo col-sm-3">
                     <div class="row">
-                        <a href="index.html"><img src="{{ '/uploads/icons/' . $global_setting->site_logo }}"
-                                    alt="logo"></a>
+                        <a href="/"><img src="{{ '/uploads/icons/' . $global_setting->site_logo }}"
+                                alt="logo"></a>
                     </div>
                 </div>
                 <div class="social_nav col-sm-9">
@@ -189,20 +189,22 @@ if (isset($normal)) {
                                 <li>
                                     <div class="touch-box"><i class="fa fa-phone"></i></div>
                                     <div class="touc-box-text">
-                                        <a href="tel:977014351732">+977 (01) 4351732</a> / <a
-                                            href="tel:977014365826">4365826</a>
+                                        {{-- <a href="tel:977014351732">+977 (01) 4351732</a> / <a
+                                            href="tel:977014365826">4365826</a> --}}
+                                        <a href="{{ $global_setting->phone }}">{{ $global_setting->phone }}</a> / <a
+                                            href="{{ $global_setting->phone_ne }}">{{ $global_setting->phone_ne }}</a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="touch-box"><i class="fa fa-envelope"></i></div>
                                     <div class="touc-box-text">
-                                        <a href="mailto:info@blueocean.com.np">info@blueocean.com.np</a>
+                                        <a
+                                            href="{{ $global_setting->site_email }}">{{ $global_setting->site_email }}</a>
                                     </div>
                                 </li>
                                 <li class="map-box">
-                                    <iframe
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.3670471835285!2d85.31881969999999!3d27.736822699999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb192427fdba53%3A0x5720ce5d1932f007!2sBlue%20Ocean%20Overseas!5e0!3m2!1sen!2snp!4v1656657978062!5m2!1sen!2snp"
-                                        width="auto" height="auto" style="border:0;"></iframe>
+                                  
+                                    {!! $global_setting->page_keyword !!}
 
                                 </li>
                             </ul>
@@ -211,7 +213,9 @@ if (isset($normal)) {
                 </div>
             </div>
             <div class="row copyrightRow">
-                &copy; 2022 Blue Ocean Overseas Pvt. Ltd., All Rights Reserved. Developed by <a
+                &copy; <script>
+                            document.write(new Date().getFullYear())
+                        </script> Blue Ocean Overseas Pvt. Ltd., All Rights Reserved. Developed by <a
                     href="https://radiantnepal.com/" target="_blank">Radiant Infotech</a>
             </div>
         </div>

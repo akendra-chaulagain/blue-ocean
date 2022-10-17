@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@push('title')
+    Apply Form
+@endpush
 @section('content')
     <section id="pageCover" class="row aboutUs">
         <div class="row pageTitle">Apply Now</div>

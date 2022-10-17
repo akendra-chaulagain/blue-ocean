@@ -4,6 +4,9 @@ $breed = App\Models\Navigation::find($normal->parent_page_id);
 
 
 @extends('layouts.master')
+@push('title')
+   {{ $normal->caption }}
+@endpush
 @section('content')
     <section id="pageCover" class="row aboutUs">
         <div class="row pageTitle">{{ $normal->caption }}</div>
@@ -16,6 +19,10 @@ $breed = App\Models\Navigation::find($normal->parent_page_id);
         </div>
     </section>
 
+
+
+
+    
 
 
     @if ($breed->nav_name == 'services')
@@ -41,6 +48,11 @@ $breed = App\Models\Navigation::find($normal->parent_page_id);
                 </div>
             </div>
         </section>
+
+
+
+
+        
     @else
         <section id="aboutus" class="row">
             <div class="container">

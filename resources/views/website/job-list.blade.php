@@ -5,6 +5,10 @@ $job_breed = App\Models\Navigation::find($job_category->parent_page_id);
 
 
 @extends('layouts.master')
+
+@push('title')
+   {{ $job_category->caption }}
+@endpush
 @section('content')
 
 

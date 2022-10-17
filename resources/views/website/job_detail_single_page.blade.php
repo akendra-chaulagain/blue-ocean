@@ -5,6 +5,12 @@ $parent_breed = App\Models\Navigation::find($breed->parent_page_id);
 
 
 @extends('layouts.master')
+
+@push('title')
+   {{ $job->caption }}
+@endpush
+
+
 @section('content')
     <section id="pageCover" class="row aboutUs">
         <div class="row pageTitle">{{ $job->caption }}</div>

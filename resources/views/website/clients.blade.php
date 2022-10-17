@@ -5,6 +5,12 @@ $job_breed = App\Models\Navigation::find($job_category->parent_page_id);
 
 
 @extends('layouts.master')
+
+@push('title')
+    {{ $client->caption }}
+@endpush
+
+
 @section('content')
     <section id="pageCover" class="row aboutUs">
         <div class="row pageTitle">{{ $client->caption }}</div>
@@ -21,7 +27,7 @@ $job_breed = App\Models\Navigation::find($job_category->parent_page_id);
             <div class="row">
                 @foreach ($client_breed as $client_breed_item)
                     <div class="col-md-3 col-sm-4">
-                        <div class="item"><img src="{{ $client_breed_item->banner_image ?? " " }}" alt=""></div>
+                        <div class="item"><img src="{{ $client_breed_item->banner_image ?? ' ' }}" alt=""></div>
                     </div>
                 @endforeach
 
