@@ -5,7 +5,7 @@
                     <div class="aboutContent">
                         <div class="member">
                             <div class="textsPart">
-                                  <h3>Message From MD</h3>
+                                  <h3>{{ $message->caption }}</h3>
                                   <p>{!! $message->long_content !!}.</p>
                             </div>
                             <div class="memImg">
