@@ -1,46 +1,39 @@
+@extends('layouts.master')
+@push('title')
+    Photo Gallery
+@endpush
+@section('content')
+    <section id="pageCover" class="row aboutUs">
+        <div class="row pageTitle">Photo Gallery</div>
+        <div class="row pageBreadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li class="active">Photo Gallery</li>
+            </ol>
+        </div>
+    </section>
 
-	 
-
-	@extends('layouts.master')
-    @section("content")
-		@include("website.navbar")		
-			<div class="theme-inner-banner">
-				<div class="overlay">
-					<div class="container">
-						<h2>{{$slug_detail->caption}}</h2>
-					</div> <!-- /.container -->
-				</div> <!-- /.overlay -->
-			</div> <!-- /.theme-inner-banner -->
+    <section class="gallery">
+        <div class="container">
+            <div class="row">
 
 
-			<!-- 
-			=============================================
-				gallery
-			============================================== 
-			-->
-			@if(isset($photos))
-			<div class="folder-spacing">
-				<div class="container">
-					<div class="row">
-							<!----gallary data----->
-							@foreach($photos as $photo)								
-								<div class="col-md-3 col-sm-4">
-									<a href="{{route('galleryview',$photo->nav_name)}}">
-									<div class="folder">
-										<div class="folder-inside" style="background: url({{$photo->banner_image}}) no-repeat; background-size: cover;"></div>
-									</div>
-									<h4>{{$photo->caption}}</h4>
-									</a>
-								</div>
-							@endforeach
-						  <!----gallary data close----->
-		                </div>
-		            </div>
-          		</div>
-			</div>
-		  @endif
-	
 
-        @include("website.company_partner")
-    @endsection
-    
+                @foreach ($photos as $photo)
+                    <div class="col-sm-4">
+                        <a href="{{ route('galleryview', $photo->nav_name) }}">
+                            <div class="folder">
+                                <div class="paper folder-pop"><img src="{{ $photo->banner_image }}" width="100%"></div>
+                                <div class="paper folder-pop-middle"><img src="{{ $photo->banner_image }}" width="100%">
+                                </div>
+                                <div class="paper folder-pop-last"><img src="{{ $photo->banner_image }}" width="100%">
+                                </div>
+                            </div>
+                            <h5 class="folder-text">{{ $photo->caption }}</h5>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+@endsection

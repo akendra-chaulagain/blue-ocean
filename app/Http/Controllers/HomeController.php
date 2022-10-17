@@ -20,7 +20,7 @@ class HomeController extends Controller
 
         // client
         $home_client  = Navigation::query()->where('nav_category', 'Main')->where('page_type', '=', 'client')->where('page_status', '1')->orderBy('position', 'ASC')->paginate(3);
-    //   return $home_client;
+        //   return $home_client;
 
 
 
@@ -106,7 +106,7 @@ class HomeController extends Controller
         // return $job_categories;
         $global_setting = GlobalSetting::all()->first();
         //return $missons;       
-        return view("website.index")->with(['testimonial' => $testimonial, 'statistics' => $statistics, 'partners' => $partners, 'jobs' => $jobs, 'banners' => $banners, 'about' => $About, 'menus' => $menus, 'global_setting' => $global_setting, 'sliders' => $sliders, 'missons' => $missons, 'job_categories' => $job_categories, 'message' => $message, 'process' => $process, "notice_data" => $notice_data, 'home_client'=> $home_client]);
+        return view("website.index")->with(['testimonial' => $testimonial, 'statistics' => $statistics, 'partners' => $partners, 'jobs' => $jobs, 'banners' => $banners, 'about' => $About, 'menus' => $menus, 'global_setting' => $global_setting, 'sliders' => $sliders, 'missons' => $missons, 'job_categories' => $job_categories, 'message' => $message, 'process' => $process, "notice_data" => $notice_data, 'home_client' => $home_client]);
     }
 
 
@@ -222,11 +222,10 @@ class HomeController extends Controller
             $client_breed = $client->client_childs;
             // return $client_breed;
 
-            return view("website.clients")->with(['message' => $message, 'client' => $client, 'jobs' => $jobs, 'menus' => $menus, 'sliders' => $sliders, 'about' => $About, 'global_setting' => $global_setting, 'slug_detail' => $slug_detail, "client_breed"=> $client_breed]);
+            return view("website.clients")->with(['message' => $message, 'client' => $client, 'jobs' => $jobs, 'menus' => $menus, 'sliders' => $sliders, 'about' => $About, 'global_setting' => $global_setting, 'slug_detail' => $slug_detail, "client_breed" => $client_breed]);
         } else {
-            
-                return redirect('/');
-            
+
+            return redirect('/');
         }
     }
 
@@ -364,7 +363,7 @@ class HomeController extends Controller
         return view("website.job_detail_single_page")->with(["partners" => $partners, 'job' => $job, 'menus' => $menus, 'global_setting' => $global_setting]);
     }
 
-    
+
     public function ReadMore($slug)
     {
         if (Navigation::query()->where('nav_category', 'Home')->where('nav_name', 'LIKE', "%message%")->where('page_type', 'Group')->latest()->first() != null) {
@@ -398,9 +397,10 @@ class HomeController extends Controller
     {
         $navigataion_id = Navigation::where('nav_name', $slug)->first()->id;
         $photos = NavigationItems::where('navigation_id', $navigataion_id)->get();
-        //return $photos;
+        $normal = Navigation::find($navigataion_id);
+
         $global_setting = GlobalSetting::all()->first();
         $menus = Navigation::query()->where('nav_category', 'Main')->where('page_type', '!=', 'Job')->where('page_type', '!=', 'Photo Gallery')->where('page_type', '!=', 'Notice')->where('parent_page_id', 0)->where('page_status', '1')->orderBy('position', 'ASC')->get();
-        return view("website.gallery_view")->with(['photos' => $photos, 'menus' => $menus, 'global_setting' => $global_setting]);
+        return view("website.gallery_view")->with(['photos' => $photos, 'menus' => $menus, 'global_setting' => $global_setting, "normal" => $normal]);
     }
 }

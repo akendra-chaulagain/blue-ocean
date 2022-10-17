@@ -65,6 +65,7 @@
     <link rel="stylesheet" type="text/css" href="/website/vendors/js-flickr-gallery/css/js-flickr-gallery.css"
         media="screen" />
     <link rel="stylesheet" type="text/css" href="/website/vendors/lightbox/css/lightbox.css" media="screen" />
+   <link rel="stylesheet" href='https://cdn.rawgit.com/sachinchoolur/lightgallery.js/master/dist/css/lightgallery.css'>
 
     <!--Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Raleway:500,600,700,100,800,900,400,200,300' rel='stylesheet'
@@ -240,6 +241,54 @@
     <!--Construction JS-->
     <script src="/website/js/custom.js"></script>
     <script type="text/javascript"></script>
+
+
+
+
+
+<!-- gllery js -->
+    <script src="/website/js/gallery/picturefill.min.js"></script>
+    <script src="/website/js/gallery/lightgallery.js"></script>
+    <script src="/website/js/gallery/lg-pager.js"></script>
+    <script src="/website/js/gallery/lg-autoplay.js"></script>
+    <script src="/website/js/gallery/lg-fullscreen.js"></script>
+    <script src="/website/js/gallery/lg-zoom.js"></script>
+    <script src="/website/js/gallery/lg-hash.js"></script>
+    <script src="/website/js/gallery/lg-share.js"></script>
+    <!--End gllery js -->
+
+    <!--Construction JS-->
+    <script src="/website/js/custom.js"></script>
+
+    <script>
+        lightGallery(document.getElementById('lightgallery'));
+
+        $(function() {
+        var selectedClass = "";
+        $(".filter").click(function(){
+        selectedClass = $(this).attr("data-rel");
+        $("#lightgallery").fadeTo(100, 0.1);
+        $("#lightgallery div").not("."+selectedClass).fadeOut().removeClass('animation');
+        setTimeout(function() {
+        $("."+selectedClass).fadeIn().addClass('animation');
+        $("#lightgallery").fadeTo(300, 1);
+        }, 300);
+        });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
