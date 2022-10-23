@@ -44,7 +44,8 @@
             outline: none !important;
             border: 0 !important;
             box-shadow: none;
-            color: #8d2927;
+            color: #ffffff;
+            font-size: 30px;
         }
 
         .swal2-html-container {
