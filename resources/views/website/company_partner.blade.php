@@ -1,3 +1,8 @@
+{{-- @php
+     $normal_gallary_notice = App\Models\Navigation::find(2523)->chil;
+       
+@endphp --}}
+
 <section id="partner" class="row">
     <div class="container">
         <div class="row partnersSlide">

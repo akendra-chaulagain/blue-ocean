@@ -19,7 +19,7 @@ class HomeController extends Controller
 
 
         // client
-        $home_client  = Navigation::query()->where('nav_category', 'Main')->where('page_type', '=', 'client')->where('page_status', '1')->orderBy('position', 'ASC')->paginate(3);
+        $home_client  = Navigation::query()->where('nav_category', 'Main')->where('page_type', '=', 'client')->where('page_status', '1')->orderBy('position', 'ASC')->paginate(30);
         //   return $home_client;
 
 
@@ -86,7 +86,7 @@ class HomeController extends Controller
         if (Navigation::query()->where('nav_category', 'Home')->where('nav_name', 'LIKE', "%news&events%")->where('page_type', 'Group')->latest()->first() != null) {
             $notice_id = Navigation::query()->where('nav_category', 'Home')->where('nav_name', 'LIKE', "%news&events%")->where('page_type', 'Group')->latest()->first()->id;
 
-            $notice_data = Navigation::find($notice_id)->childs;
+            $notice_data = Navigation::find($notice_id)->childs->take(3);
             // return $notice_data;
         } else {
             $message = null;
