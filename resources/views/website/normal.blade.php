@@ -57,13 +57,13 @@
                 <div class="row">
 
                     <div class=" col-sm-9">
-                        <div class="row aboutContent">
-                            <div class="row aboutUsTexts m0 member">
-                                <div class="fleft textsPart">
+                        <div class="aboutContent">
+                            <div class="aboutUsTexts  member">
+                                <div class="textsParts">
                                     <h2>{!! $normal->short_content !!}</h2>
                                     <p>{!! $normal->long_content !!}</p>
                                 </div>
-                                <div class="fleft aboutImg">
+                                <div class="aboutImg">
                                     <img src="{{ $normal->banner_image }}" alt="">
                                 </div>
                             </div>
