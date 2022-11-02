@@ -2865,7 +2865,7 @@ header .social_nav ul li:last-child {
 }
 #aboutus .member .aboutImg,
 #aboutus .member .memImg {
-  width: 500px;
+  /* width: 500px; */
   margin-top: 30px;
   /* padding: 0 0 0 30px; */
 }
