@@ -86,7 +86,7 @@ class HomeController extends Controller
         if (Navigation::query()->where('nav_category', 'Home')->where('nav_name', 'LIKE', "%news&events%")->where('page_type', 'Group')->latest()->first() != null) {
             $notice_id = Navigation::query()->where('nav_category', 'Home')->where('nav_name', 'LIKE', "%news&events%")->where('page_type', 'Group')->latest()->first()->id;
 
-            $notice_data = Navigation::find($notice_id)->childs->take(3);
+            $notice_data = Navigation::find($notice_id)->childs;
             // return $notice_data;
         } else {
             $message = null;
