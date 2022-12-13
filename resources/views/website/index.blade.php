@@ -77,7 +77,7 @@
 
 
     @include('website.main_slider')
-    @include('website.company-success')
+    {{-- @include('website.company-success') --}}
     @include('website.home_about_company')
     @include('website.home_job_category')
     @include('website.home_message')

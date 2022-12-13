@@ -1,5 +1,5 @@
 @php
-$products_data = App\Models\Navigation::find(2471);
+    $products_data = App\Models\Navigation::find(2471);
 @endphp
 
 
@@ -40,7 +40,8 @@ $products_data = App\Models\Navigation::find(2471);
                         </div> --}}
                     </div>
                     <div class="fright projectIcons btn-group" role="group">
-                        <a href="{{ $products_data->nav_name }}/{{$project_headingitem->nav_name  }}" class="btn btn-default"><i class="fa fa-plus"></i></a>
+                        <a href="{{ $products_data->nav_name }}/{{ $project_headingitem->nav_name }}"
+                            class="btn btn-default"><i class="fa fa-plus"></i></a>
                     </div>
                 </div>
             </div>
