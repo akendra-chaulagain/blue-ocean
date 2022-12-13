@@ -23,11 +23,14 @@ class HomeController extends Controller
         //   return $home_client;
 
 
+        $notice_data = Navigation::all()->where('page_type', '=', 'Notice');
+
+        // return $notice_data;
 
 
 
-        //return $menus;
-        //return $menus->first()->submenus;
+
+
         $jobs = Navigation::query()->where('page_type', 'Job')->latest()->paginate(10);
         if (Navigation::query()->where('nav_category', 'Home')->where('nav_name', 'LIKE', "%about%")->where('page_type', 'Group')->latest()->first() != null) {
             $about_id = Navigation::query()->where('nav_category', 'Home')->where('nav_name', 'LIKE', "%about%")->where('page_type', 'Group')->latest()->first()->id;
@@ -85,7 +88,6 @@ class HomeController extends Controller
 
         if (Navigation::query()->where('nav_category', 'Home')->where('nav_name', 'LIKE', "%news&events%")->where('page_type', 'Group')->latest()->first() != null) {
             $notice_id = Navigation::query()->where('nav_category', 'Home')->where('nav_name', 'LIKE', "%news&events%")->where('page_type', 'Group')->latest()->first()->id;
-
         } else {
             $message = null;
         }
@@ -104,7 +106,7 @@ class HomeController extends Controller
         // return $job_categories;
         $global_setting = GlobalSetting::all()->first();
         //return $missons;       
-        return view("website.index")->with(['testimonial' => $testimonial, 'statistics' => $statistics, 'partners' => $partners, 'jobs' => $jobs, 'banners' => $banners, 'about' => $About, 'menus' => $menus, 'global_setting' => $global_setting, 'sliders' => $sliders, 'missons' => $missons, 'job_categories' => $job_categories, 'message' => $message, 'process' => $process, 'home_client' => $home_client]);
+        return view("website.index")->with(['testimonial' => $testimonial, 'statistics' => $statistics, 'partners' => $partners, 'jobs' => $jobs, 'banners' => $banners, 'about' => $About, 'menus' => $menus, 'global_setting' => $global_setting, 'sliders' => $sliders, 'missons' => $missons, 'job_categories' => $job_categories, 'message' => $message, 'process' => $process, 'home_client' => $home_client, 'notice_data' => $notice_data]);
     }
 
 
